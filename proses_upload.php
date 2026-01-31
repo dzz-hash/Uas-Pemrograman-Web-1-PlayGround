@@ -1,7 +1,7 @@
 <?php
 include 'config/koneksi.php';
 
-// Pastikan library SweetAlert2 tersedia di halaman ini
+
 echo '<!DOCTYPE html>
 <html lang="id">
 <head>

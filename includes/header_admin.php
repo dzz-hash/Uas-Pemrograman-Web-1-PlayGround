@@ -17,7 +17,6 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-    /* 1. KEYFRAMES ANIMASI GRADIENT (SAMA DENGAN INDEX) */
     @keyframes gradientAnimation {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
@@ -25,7 +24,6 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     body {
-        /* Latar belakang dasar menggunakan gradient animasi lembut */
         background: linear-gradient(-45deg, #f8f9fc, #e2e8f0, #f1f5f9, #ffffff);
         background-size: 400% 400%;
         animation: gradientAnimation 10s ease infinite;
@@ -33,7 +31,6 @@ if (session_status() === PHP_SESSION_NONE) {
         min-height: 100vh;
     }
 
-    /* 2. STYLE NAVBAR DENGAN ANIMASI */
     .navbar {
         background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d) !important;
         background-size: 400% 400% !important;
@@ -43,7 +40,6 @@ if (session_status() === PHP_SESSION_NONE) {
         padding: 15px 0;
     }
 
-    /* PAKSA SEMUA TEKS NAVBAR JADI PUTIH */
     .navbar .navbar-brand {
         color: #ffffff !important;
         font-weight: 700 !important;
@@ -51,18 +47,17 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .navbar .nav-link {
-        color: rgba(255, 255, 255, 0.85) !important; /* Putih sedikit transparan */
+        color: rgba(255, 255, 255, 0.85) !important;
         font-weight: 500;
         margin: 0 5px;
         transition: all 0.3s ease;
     }
 
     .navbar .nav-link i {
-        color: #ffffff !important; /* Ikon jadi putih */
+        color: #ffffff !important;
         margin-right: 5px;
     }
 
-    /* Efek Hover & Link Aktif */
     .navbar .nav-link:hover, 
     .navbar .nav-link.active {
         color: #ffffff !important;
@@ -70,13 +65,11 @@ if (session_status() === PHP_SESSION_NONE) {
         border-radius: 8px;
     }
 
-    /* Warna Toggler (Hamburger Menu) di Mobile */
     .navbar-toggler {
         border-color: rgba(255, 255, 255, 0.5) !important;
-        filter: brightness(0) invert(1); /* Paksa ikon jadi putih */
+        filter: brightness(0) invert(1);
     }
 
-    /* Button Logout Custom */
     .btn-logout {
         color: #ffffff !important;
         border: 2px solid rgba(255, 255, 255, 0.5) !important;
@@ -91,7 +84,6 @@ if (session_status() === PHP_SESSION_NONE) {
         border-color: #ffffff !important;
     }
 
-    /* 3. STYLE UNTUK CARD (GLASSMORPHISM) */
     .card {
         border: none;
         background: rgba(255, 255, 255, 0.9);
@@ -99,10 +91,6 @@ if (session_status() === PHP_SESSION_NONE) {
         border-radius: 15px;
         box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
     }
 
     .admin-content {
@@ -147,10 +135,36 @@ if (session_status() === PHP_SESSION_NONE) {
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </li>
-            
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="admin-content">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Yakin ingin keluar?',
+                    text: "Sesi Anda akan diakhiri.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#b21f1f',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Ya, Logout!',
+                    cancelButtonText: 'Batal',
+                    reverseButtons: true
+                }).then((result) => {   
+                    if (result.isConfirmed) {
+                    
+                        window.location.href = 'logout.php';
+                    }
+                });
+            });
+        }
+    });
+</script>
